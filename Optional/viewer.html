@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Material</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+    #pdfFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none; /* blocks all mouse clicks on the PDF area */
+    }
+  </style>
+</head>
+<body>
+  <iframe id="pdfFrame"></iframe>
+
+  <script>
+    const API_BASE_URL = 'http://localhost:8080/api/files';
+
+    // // Disable right‑click anywhere on this page
+    // document.addEventListener('contextmenu', function (e) {
+    //   e.preventDefault();
+    // });
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    const fileId = getQueryParam('id');
+
+    if (!fileId) {
+      alert('Invalid file id');
+    } else {
+      const frame = document.getElementById('pdfFrame');
+      frame.src = `${API_BASE_URL}/view/${encodeURIComponent(fileId)}#toolbar=0`;
+    }
+  </script>
+</body>
+</html> -->

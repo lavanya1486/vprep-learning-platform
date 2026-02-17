@@ -1,0 +1,248 @@
+html {
+  scroll-behavior: smooth;
+}
+*{
+    padding: 0%;
+    margin: 0%;
+}
+ main{
+    padding-top: 120px;
+    font-family: Arial, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+#navBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;      /* left side vs right side [web:21] */
+    background-color: rgb(184, 199, 228);
+    padding: 0 2%;
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#logo img {
+    height: 60px;
+}
+
+.navLinks {
+    display: flex;
+    gap: 1.3rem;
+    list-style: none;
+    margin: 0;
+}
+
+.navLinks li a {
+    text-decoration: none;
+    color: #0f2274;
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+.navLinks li a:hover {
+    color: #2176ae;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #222;
+}
+
+@media (max-width: 700px) {
+    .navLinks {
+        display: none;
+        flex-direction: column;
+        background-color: #6b86a1;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 200px;
+    }
+    .navLinks.active {
+        display: flex;
+    }
+    .hamburger {
+        display: block;
+    }
+}
+
+.vprep-bmac-widget {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #ffdd00;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    z-index: 9999;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vprep-bmac-widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+/* Tooltip */
+.vprep-bmac-tooltip {
+    position: fixed;
+    left: 80px;          /* to the right of the button */
+    bottom: 28px;
+    max-width: 260px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.4;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Show tooltip on hover */
+.vprep-bmac-widget:hover + .vprep-bmac-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile tweak */
+@media (max-width: 600px) {
+    .vprep-bmac-widget {
+        left: 16px;
+        bottom: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .vprep-bmac-tooltip {
+        left: 70px;
+        bottom: 22px;
+        max-width: 220px;
+        font-size: 12px;
+    }
+}
+
+.heading {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 20px 0 30px;
+    color: #1f3b64;
+}
+.materials-section {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+#materialsInfo {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444;
+}
+.materials-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.materials-table thead {
+    background-color: #2163d1;
+    color: #ffffff;
+}
+.materials-table th,
+.materials-table td {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.95rem;
+}
+.materials-table tbody tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+.materials-table tbody tr:hover {
+    background-color: #eef3ff;
+}
+.view-btn,
+.download-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+    margin-right: 6px;
+    cursor: pointer;
+    border: none;
+}
+.view-btn {
+    background-color: #007bff;
+}
+.view-btn:hover {
+    background-color: #0062cc;
+}
+.download-btn {
+    background-color: #28a745;
+}
+.download-btn:hover {
+    background-color: #218838;
+}
+.no-materials {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    color: #555;
+    font-size: 0.95rem;
+}
+        /* PDF viewer */
+#viewerSection {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    display: none;
+}
+#viewerTitle {
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+    color: #1f3b64;
+}
+@media (max-width: 700px) {
+    .materials-section,
+    #viewerSection {
+        padding: 0 10px;
+    }
+.materials-table th,
+.materials-table td {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+}
+.heading {
+    font-size: 1.7rem;
+}
+}
+

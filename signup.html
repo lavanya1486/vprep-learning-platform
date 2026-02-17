@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VPrep Sign Up</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="signup.css">
+
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      connect-src 'self' https://vprep.up.railway.app;
+      style-src 'self' 'unsafe-inline' https://accounts.google.com;
+      script-src 'self' https://accounts.google.com https://cdn.jsdelivr.net;
+      frame-src https://accounts.google.com;
+      font-src 'self';
+    "
+  >
+  
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+
+      <!-- LEFT: SIGNUP FORM -->
+      <div class="login-left">
+        <h2>Sign up</h2>
+        <p class="subtitle">Create your account to start learning.</p>
+
+        <!-- SINGLE SIGNUP FORM (no nested form) -->
+        <form id="signup-form">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Create a password" required>
+
+          <!-- loading button -->
+          <button type="submit" id="signupBtn" class="primary-btn">
+            <span class="btn-text">Sign Up</span>
+            <span class="btn-loader"></span>
+          </button>
+
+          <!-- Google Sign Up button -->
+          <div id="google-signup"></div>
+        </form>
+
+        <p class="bottom-text">
+          Already have an account?
+          <a href="login.html" class="signup-link">Log In</a>
+        </p>
+
+        <!-- HIDDEN PROFILE SECTION -->
+        <div id="success-section" style="display: none; padding: 2rem;">
+          <h2>Signup Successful!</h2>
+          <p>Please complete your profile to continue.</p>
+
+          <form id="profile-form">
+            <label>First Name</label>
+            <input type="text" id="first-name" placeholder="Enter first name" required>
+
+            <label>Last Name</label>
+            <input type="text" id="last-name" placeholder="Enter last name" required>
+
+            <label>Course Enrolled</label>
+            <input type="text" id="course" placeholder="e.g., BTech Computer Science" required>
+
+            <label>Year of Study</label>
+            <select id="year" required>
+              <option value="">Select year</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+              <option value="5">5th Year</option>
+            </select>
+
+            <!-- loading button for profile completion -->
+            <button type="submit" id="profileBtn" class="primary-btn">
+              <span class="btn-text">Complete Profile</span>
+              <span class="btn-loader"></span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Load JS after HTML so elements exist -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="signup.js"></script> 
+</body>
+</html>

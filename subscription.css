@@ -1,0 +1,126 @@
+body {
+  background: linear-gradient(135deg, #f4c7ff, #c9d6ff);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.subs-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+.subs-header {
+  text-align: center;
+  color: #00167a;
+  margin-bottom: 2rem;
+}
+.subs-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.2rem;
+}
+.subs-header p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+.subs-toggle {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+.subs-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.subs-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.8rem 1.5rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,22,122,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.subs-card.highlight {
+  background: #00167a;
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+.subs-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.subs-price {
+  font-size: 1.6rem;
+  margin: 0.2rem 0 0.6rem;
+}
+.subs-price span {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.subs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
+  font-size: 0.9rem;
+}
+.subs-list li {
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.subs-list li::before {
+  content: "✔";
+  color: #24a148;
+  font-size: 0.8rem;
+}
+.subs-card.highlight .subs-list li::before {
+  color: #9cffc7;
+}
+.subs-btn {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #00167a;
+  color: #ffffff;
+}
+.subs-card.highlight {
+  background: #001050;        /* darker navy */
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);  /* less glow, more shadow */
+}
+
+.subs-card.highlight .subs-btn {
+  background: #f4f5f7;        /* softer white */
+  color: #001050;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);  /* smaller, softer halo */
+}
+
+.subs-note {
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+@media (max-width: 900px) {
+  .subs-cards {
+    grid-template-columns: 1fr;
+  }
+  .subs-card.highlight {
+    transform: none;
+  }
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Materials - VPrep</title>
+    <link rel="stylesheet" href="VPrepMain.css">
+    <link rel="stylesheet" href="SubStyle.css">
+    <style>
+        .materials-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .materials-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 15px;
+        }
+
+        .materials-header h2 {
+            margin: 0;
+            color: #333;
+            font-size: 28px;
+        }
+
+        .back-btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .materials-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .materials-table thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .materials-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .materials-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .materials-table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .download-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+        }
+
+        .no-materials {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #007bff;
+            font-size: 18px;
+            padding: 30px;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as main site) -->
+    <nav class="navbar">
+        <div class="navContainer">
+            <img src="V-Prep-1.jpg" alt="VPrep" class="navLogo">
+            <ul class="navLinks">
+                <li><a href="VPrepMain.html">Home</a></li>
+                <li><a href="VPrepMain.html#courses">Courses</a></li>
+                <li><a href="VPrepMain.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="materials-container">
+        <div class="materials-header">
+            <h2 id="subjectTitle">Loading...</h2>
+            <button class="back-btn" onclick="goBack()">← Back</button>
+        </div>
+
+        <div id="errorContainer"></div>
+        <div id="loadingContainer" class="loading">Loading materials...</div>
+        <div id="materialsContainer" style="display: none;">
+            <table class="materials-table">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Type</th>
+                        <th>Size</th>
+                        <th>Uploaded</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="materialsBody">
+                </tbody>
+            </table>
+            <div id="noMaterials" class="no-materials" style="display: none;">
+                No study materials available yet for this subject.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8080/api/files';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMaterials();
+        });
+
+        function loadMaterials() {
+            // Get subject from URL query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject');
+
+            if (!subject) {
+                showError('No subject specified');
+                return;
+            }
+
+            document.getElementById('subjectTitle').textContent = decodeURIComponent(subject);
+
+            fetch(`${API_BASE_URL}/subject/${encodeURIComponent(subject)}`)
+                .then(res => {
+                    if (!res.ok) throw new Error('Failed to load materials');
+                    return res.json();
+                })
+                .then(files => {
+                    displayMaterials(files);
+                })
+                .catch(err => {
+                    console.error('Error loading materials:', err);
+                    showError('Failed to load materials. Please try again later.');
+                });
+        }
+
+        function displayMaterials(files) {
+            const loadingContainer = document.getElementById('loadingContainer');
+            const materialsContainer = document.getElementById('materialsContainer');
+            const tbody = document.getElementById('materialsBody');
+            const noMaterials = document.getElementById('noMaterials');
+
+            loadingContainer.style.display = 'none';
+
+            if (!files || files.length === 0) {
+                noMaterials.style.display = 'block';
+                materialsContainer.style.display = 'block';
+                return;
+            }
+
+            tbody.innerHTML = '';
+            files.forEach(file => {
+                const row = document.createElement('tr');
+                const uploadDate = file.uploadDate ? new Date(file.uploadDate).toLocaleDateString() : 'Unknown';
+                const fileSize = (file.fileSize / 1024).toFixed(1);
+
+                row.innerHTML = `
+                    <td><strong>${file.fileName}</strong></td>
+                    <td>${file.fileType || 'Notes'}</td>
+                    <td>${fileSize} KB</td>
+                    <td>${uploadDate}</td>
+                    <td>
+                        <a href="${API_BASE_URL}/download/${file.id}" 
+                           class="download-btn" 
+                           target="_blank" 
+                           download>
+                            ↓ Download
+                        </a>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            materialsContainer.style.display = 'block';
+        }
+
+        function showError(message) {
+            document.getElementById('loadingContainer').style.display = 'none';
+            document.getElementById('errorContainer').innerHTML = `<div class="error">${message}</div>`;
+        }
+
+        function goBack() {
+            window.location.href = 'VPrepMain.html';
+        }
+    </script>
+</body>
+</html>

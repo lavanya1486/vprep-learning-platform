@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPrep</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="VPrepMain.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <script src="VPrepMain.js" defer></script> 
+    <header>
+        <section id="home"></section>
+            <nav id="navBar">
+                <div class="nav-left">
+                    <div id="logo">
+                        <img src="V Prep (1).png" alt="Logo">
+                    </div>
+                    <ul class="navLinks">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#faq">FAQ's</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+      
+        <!-- RIGHT: auth buttons (before login) -->
+        <div class="navAuth" id="navAuth">
+          <button class="btn-outline" id="loginBtn">Login</button>
+          <button class="btn-filled" id="signupBtn">Sign up</button>
+        </div>
+        
+        <!-- RIGHT: profile circle (after login) -->
+        <div class="user-menu hidden" id="userMenu">
+          <div class="avatar-circle" id="avatarCircle">U</div>
+          <div class="user-dropdown">
+            <p class="user-name" id="userName">User name</p>
+            <p class="user-expiry" id="planExpiry" style="display: none;">Valid till: —</p>
+            <button id="logoutBtn" class="logout-btn">Log out</button>
+          </div>
+        </div>
+        
+      
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+      </nav>
+      
+    </header>
+    
+    <div class="vprep-popup" id="vprepPopup">
+        <span class="popup-message">Hey VITians , Ready to ace this semester 🚀?</span>
+        <span class="popup-close" onclick="document.getElementById('vprepPopup').style.display='none'">&times;</span>
+    </div>
+
+    <!-- Buy Me a Coffee Floating Widget -->
+    <a href="https://buymeacoffee.com/vprepbylavanya"
+       target="_blank"
+       rel="noopener"
+       class="vprep-bmac-widget"
+       title="Support VPrep with a coffee!">
+       ☕
+    </a>
+    
+    <div class="vprep-bmac-tooltip">
+        Thanks for keeping VPrep running for students! 💙
+    </div>
+    
+    <main>
+        <section class="HomeTab"></section>
+        <section class="hero-banner">
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <div class="behind-box">
+                <span class="hero-university">Welcome to vprep:<br>Your College Resource Hub</span>
+                <h1 class="hero-title">
+                    Discover Curated Notes,<br>Past Papers and<br>Study Guides
+                </h1>
+                <br>
+                <p class="hero-subtext">
+                    <strong>V</strong>Prep is a student-run initiative to make learning smarter.
+                </p>
+                </div>
+            </div>
+        </section>
+        <section class="Courses" id="courses">
+        <div class="SubHeading1">
+            <h2>Courses</h2>
+        </div>
+        <section>
+            <div class="btns">
+                <button onclick="showSet('pCore')">Programme Core</button>
+                <button onclick="showSet('pElective')">Programme Elective</button>
+                <button onclick="showSet('UniCore-NSE')">University Core - Natural Science Core</button>
+                <button onclick="showSet('uniCore-BESC')">University Core - Basic Engineering Sciences Core</button>
+                <button onclick="showSet('uniCore-SDC')">University Core - Skill Development Courses</button>
+                <button onclick="showSet('uniCore-HSMC')">University Core - Humanities Social Science and Management Core</button>
+                <button onclick="showSet('uniCore-Proj_Internships')">University Core - Project and Internships</button>
+                <button onclick="showSet('uniElective-NSE')">University Elective - Natural Science Elective</button>
+                <button onclick="showSet('uniElective-ME')">University Elective - Multidisciplinary Elective</button>
+                <button onclick="showSet('uniElective-HSME')">University Elective - Humanities , Social Sciences and Management Elective</button>
+                <button onclick="showSet('uniElective-OP')">University Elective - Open Electives</button>
+                <button onclick="showSet('NonGraded')">Non-Graded Mandatory Courses</button>
+            </div>
+        </section>
+        </section>
+        <br>
+        <section class="AutoScroll" id="autoScroll"></section>
+        <section>
+            <div class="pCore">
+                <a href="oops.html">
+                    <div class="set pCore" id="CPP">
+                        <div class="course-code">CSE2001</div>
+                        <div class="course-title">Object Oriented Programming with C++</div>
+                        <div class="course-desc">Lecture and Tutorial, practical hours only</div>
+                    </div>
+                </a>
+                <a href="dsa.html">
+                    <div class="set pCore" id="DSA">
+                        <div class="course-code">CSE2002</div>
+                        <div class="course-title">Data Structures and Algorithms</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="cao.html">
+                    <div class="set pCore" id="CAO">
+                        <div class="course-code">CSE2003</div>
+                        <div class="course-title">Computer Architecture and Organization</div>
+                        <div class="course-desc">Lecture and Tutorial hours only</div>
+                    </div>
+                </a>
+                <a href="toc.html">
+                    <div class="set pCore" id="TOC">
+                        <div class="course-code">CSE2004</div>
+                        <div class="course-title">Theory Of Computation And Compiler Design</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="dbms.html">
+                    <div class="set pCore" id="DBMS">
+                        <div class="course-code">CSE3001</div>
+                        <div class="course-title">Database Management Systems</div>
+                        <div class="course-desc">Lecture and Tutorial hours only</div>
+                    </div>
+                </a>
+                <a href="os.html">
+                    <div class="set pCore" id="OS">
+                        <div class="course-code">CSE3003</div>
+                        <div class="course-title">Operating System</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="daa.html">
+                    <div class="set pCore" id="DAA">
+                        <div class="course-code">CSE3004</div>
+                        <div class="course-title">Design and Analysis of Algorithms</div>
+                        <div class="course-desc">Lecture and Tutorial hours only</div>
+                    </div>
+                </a>
+                <a href="SoftwareEng.html">
+                    <div class="set pCore" id="SoftwareEng">
+                        <div class="course-code">CSE3005</div>
+                        <div class="course-title">Software Engineering</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="cn.html">
+                    <div class="set pCore" id="CN">
+                        <div class="course-code">CSE3006</div>
+                        <div class="course-title">Computer Networks</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="pdc.html">
+                    <div class="set pCore" id="PDC">
+                        <div class="course-code">CSE3009</div>
+                        <div class="course-title">Parallel and Distributed Computing</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="PythonProg.html">
+                    <div class="set pCore" id="PythonProg">
+                        <div class="course-code">CSE3011</div>
+                        <div class="course-title">Python Programming</div>
+                        <div class="course-desc">Lecture and Tutorial hours only</div>
+                    </div>
+                </a>
+                <a href="iwp.html">
+                    <div class="set pCore" id="IWP">
+                        <div class="course-code">CSE4001</div>
+                        <div class="course-title">Internet and Web Programming</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="dld.html">
+                    <div class="set pCore" id="DLD">
+                        <div class="course-code">ECE2002</div>
+                        <div class="course-title">Digital Logic Design</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="mpmc.html">
+                    <div class="set pCore" id="MPMC">
+                        <div class="course-code">ECE3004</div>
+                        <div class="course-title">Microprocessors And Microcontrollers</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="pElective">
+                <a href="iot.html" >
+                    <div class="set pElective" id="IOT">
+                        <div class="course-code">CCA3011</div>
+                        <div class="course-title">Internet of Things</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="his.html">
+                    <div class="set pElective" id="HIS">
+                        <div class="course-code">CHI2007</div>
+                        <div class="course-title">Healthcare Information Systems</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="dv.html">
+                    <div class="set pElective" id="DV">
+                        <div class="course-code">CSA3004</div>
+                        <div class="course-title">Data Visualizations</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="cc.html">
+                    <div class="set pElective" id="CC">
+                        <div class="course-code">CSA3005</div>
+                        <div class="course-title">Cloud Computing</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="ke.html">
+                    <div class="set pElective" id="KE">
+                        <div class="course-code">CSA3017</div>
+                        <div class="course-title">Knowledge Engineering</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="dm&dw.html">
+                    <div class="set pElective" id="DM&DW">
+                        <div class="course-code">CSA4003</div>
+                        <div class="course-title">Data Mining And Data Warehousing</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="ir&ws.html">
+                    <div class="set pElective" id="IR&WS">
+                        <div class="course-code">CSA4011</div>
+                        <div class="course-title">Information Retrieval and Web Search</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="eh.html">
+                    <div class="set pElective" id="EH">
+                        <div class="course-code">CSD4002</div>
+                        <div class="course-title">Ethical Hacking</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="csf.html">
+                    <div class="set pElective" id="CSF">
+                        <div class="course-code">CSD4008</div>
+                        <div class="course-title">Cyber Security Framework</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="ve.html">
+                    <div class="set pElective" id="VE">
+                        <div class="course-code">CSD5002</div>
+                        <div class="course-title">Virtualization Essentials</div>
+                        <div class="course-desc">Lecture and Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="fs.html">
+                    <div class="set pElective" id="FS">
+                        <div class="course-code">CSD5008 </div>
+                        <div class="course-title">Forensic Science</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="sc.html">
+                    <div class="set pElective" id="SC">
+                        <div class="course-code">CSE3008</div>
+                        <div class="course-title">Soft Computing</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="cv.html">
+                    <div class="set pElective" id="CV">
+                        <div class="course-code">CSE3010</div>
+                        <div class="course-title">Computer Vision</div>
+                        <div class="course-desc">Lecture and Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="mad.html">
+                    <div class="set pElective" id="MAD">
+                        <div class="course-code">CSE3012</div>
+                        <div class="course-title">Mobile Application Development</div>
+                        <div class="course-desc">Lecture and Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="asd.html">
+                    <div class="set pElective" id="ASD">
+                        <div class="course-code">CSE3013</div>
+                        <div class="course-title">Agile Software Development</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="mi.html">
+                    <div class="set pElective" id="MI">
+                        <div class="course-code">CSE3014</div>
+                        <div class="course-title">Medical Imaging</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="AWScloud.html">
+                    <div class="set pElective" id="AWScloud">
+                        <div class="course-code">CSE3015</div>
+                        <div class="course-title">AWS Cloud Practitioner</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="AWSsol.html">
+                    <div class="set pElective" id="AWSsol">
+                        <div class="course-code">CSE3016</div>
+                        <div class="course-title">AWS Solution Architect</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="salesforce.html">
+                    <div class="set pElective" id="Salesforce">
+                        <div class="course-code">CSE3017</div>
+                        <div class="course-title">Salesforce</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="bigdata_analytics.html">
+                    <div class="set pElective" id="Bigdata_Analytics">
+                        <div class="course-code">CSE4003</div>
+                        <div class="course-title">Bigdata Analytics</div>
+                        <div class="course-desc">Lecture and Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="ml.html">
+                    <div class="set pElective" id="ML">
+                        <div class="course-code">CSE4005</div>
+                        <div class="course-title">Machine Learning</div>
+                        <div class="course-desc">Lecture and Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Software_Defined_Network.html">
+                    <div class="set pElective" id="Software_Defined_Network">
+                        <div class="course-code">CSE4012</div>
+                        <div class="course-title">Software Defined Network</div>
+                        <div class="course-desc">Lecture and Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Software_Project_Management.html">
+                    <div class="set pElective" id="Software_Project_Management">
+                        <div class="course-code">CSE4016</div>
+                        <div class="course-title">Software Project Management</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Software_Testing.html">
+                    <div class="set pElective" id="Software_Testing">
+                        <div class="course-code">CSE4017</div>
+                        <div class="course-title">Software Testing</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="ar&vr.html">
+                    <div class="set pElective" id="AR&VR">
+                        <div class="course-code">CSG2001</div>
+                        <div class="course-title">Augmented Reality and Virtual Reality</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="Wireless_Sensor_Networks.html">
+                    <div class="set pElective" id="Wireless_Sensor_Networks">
+                        <div class="course-code">ECE4007</div>
+                        <div class="course-title">Wireless Sensor Networks</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Embedded_Systems.html">
+                    <div class="set pElective" id="Embedded_Systems">
+                        <div class="course-code">ECE4010</div>
+                        <div class="course-title">Embedded Systems</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="PATTERN_RECOGNITION_AND_IMAGE_ANALYSIS.html">
+                    <div class="set pElective" id="PATTERN_RECOGNITION_AND_IMAGE_ANALYSIS">
+                        <div class="course-code">ECE6012</div>
+                        <div class="course-title">Pattern Recognition And Image Analysis</div>
+                        <div class="course-desc">Lecture and Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Applied_Cryptography.html">
+                    <div class="set pElective" id="Applied_Cryptography">
+                        <div class="course-code">MAT2009</div>
+                        <div class="course-title">Applied Cryptography</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Mathematical_Foundations_for_Cybersecurit.html">
+                    <div class="set pElective" id="Mathematical_Foundations_for_Cybersecurity">
+                        <div class="course-code">MAT5004</div>
+                        <div class="course-title">Mathematical Foundations for Cybersecurity</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="UniCore-NSE">
+                <a href="ENGINEERING_CHEMISTRY.html" >
+                    <div class="set UniCore-NSE" id="ENGINEERING_CHEMISTRY">
+                        <div class="course-code">CHY1001</div>
+                        <div class="course-title">Engineering Chemistry</div>
+                        <div class="course-desc">Lecture and Tutorial ,practical hours only</div>
+                    </div>
+                </a>
+                <a href="Computational_chemistry.html" >
+                    <div class="set UniCore-NSE" id="Computational_chemistry">
+                        <div class="course-code">CHY1005</div>
+                        <div class="course-title">Introduction to Computational chemistry</div>
+                        <div class="course-desc">Lecture and Tutorial ,practical hours only</div>
+                    </div>
+                </a>
+                <a href="calculas.html" >
+                    <div class="set UniCore-NSE" id="Calculas">
+                        <div class="course-code">MAT1003</div>
+                        <div class="course-title">Calculus</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Discrete_Math&Graph_Theo.html" >
+                    <div class="set UniCore-NSE" id="Discrete_Math&Graph_Theo">
+                        <div class="course-code">MAT2002</div>
+                        <div class="course-title">Discrete Mathematics and Graph Theory</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Transform_Techniques_and_Difference_Equations.html" >
+                    <div class="set UniCore-NSE" id="Transform_Techniques_and_Difference_Equations">
+                        <div class="course-code">MAT2005</div>
+                        <div class="course-title">Transform Techniques and Difference Equations</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="ala.html" >
+                    <div class="set UniCore-NSE" id="ALA">
+                        <div class="course-code">MAT3002</div>
+                        <div class="course-title">Applied Linear Algebra</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Probability,Statistics&Reliability.html" >
+                    <div class="set UniCore-NSE" id="Probability,Statistics&Reliability">
+                        <div class="course-code">MAT3003</div>
+                        <div class="course-title">Probability, Statistics and Reliability</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="ENGINEERING_PHYSICS.html" >
+                    <div class="set UniCore-NSE" id="ENGINEERING_PHYSICS">
+                        <div class="course-code">PHY1001</div>
+                        <div class="course-title">Engineering Physics</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="Computational_chemistry.html" >
+                    <div class="set UniCore-NSE" id="Computational_Physics">
+                        <div class="course-code">PHY1003</div>
+                        <div class="course-title">Introduction to Computational Physics</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="Fundamentals_of_Space_Physics.html" >
+                    <div class="set UniCore-NSE" id="Fundamentals_of_Space_Physics">
+                        <div class="course-code">PHY1004</div>
+                        <div class="course-title">Fundamentals Of Space Physics</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniCore-BESC">
+                <a href="Fundamentals_in_AI&ML.html" >
+                    <div class="set uniCore-BESC" id="Fundamentals_in_AI&ML">
+                        <div class="course-code">CSA2001</div>
+                        <div class="course-title">Fundamentals in AI & ML</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="EEE.html" >
+                    <div class="set uniCore-BESC" id="EEE">
+                        <div class="course-code">EEE1001</div>
+                        <div class="course-title">Electric Circuits and Systems</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+                <a href="edm.html" >
+                    <div class="set uniCore-BESC" id="EDM">
+                        <div class="course-code">MEE2014</div>
+                        <div class="course-title">Engineering Design and Modelling</div>
+                        <div class="course-desc">Lecture and Tutorial,practical hours only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniCore-SDC">
+                <a href="ProblemSol.html" >
+                    <div class="set uniCore-SDC" id="ProblemSol">
+                        <div class="course-code">CSE1021</div>
+                        <div class="course-title">Introduction to Problem Solving and Programming</div>
+                        <div class="course-desc">Lecture and Tutorial ,practical hours only</div>
+                    </div>
+                </a>
+                <a href="Programming_in_java.html" >
+                    <div class="set uniCore-SDC" id="Programming_in_java">
+                        <div class="course-code">CSE2006</div>
+                        <div class="course-title">Programming in Java</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="CPP.html" >
+                    <div class="set uniCore-SDC" id="CPP">
+                        <div class="course-code">PLA1004</div>
+                        <div class="course-title">Competitive Coding Practices</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Lateral_Thinking.html" >
+                    <div class="set uniCore-SDC" id="Lateral_Thinking">
+                        <div class="course-code">PHY1006</div>
+                        <div class="course-title">Lateral Thinking</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Professional_Communication_Skills_for_Engineers.html" >
+                    <div class="set uniCore-SDC" id="Professional_Communication_Skills_for_Engineers">
+                        <div class="course-code">SST1003</div>
+                        <div class="course-title">Professional Communication Skills for Engineers</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Dynamics_of_workplace_communication_Skills.html" >
+                    <div class="set uniCore-SDC" id="Dynamics_of_workplace_communication_Skills">
+                        <div class="course-code">SST2003</div>
+                        <div class="course-title">Dynamics of workplace communication Skills</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniCore-HSMC">
+                <a href="evs.html" >
+                    <div class="set uniCore-HSMC" id="EVS">
+                        <div class="course-code">CHY1006</div>
+                        <div class="course-title">Environmental Sustainability</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="EFFECTIVE_TECHNICAL_COMMUNICATION.html" >
+                    <div class="set uniCore-HSMC" id="EFFECTIVE_TECHNICAL_COMMUNICATION">
+                        <div class="course-code">ENG1004</div>
+                        <div class="course-title">Effective Technical Communication</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="ADVANCED_TECHNICAL_COMMUNICATION.html" >
+                    <div class="set uniCore-HSMC" id="ADVANCED_TECHNICAL_COMMUNICATION">
+                        <div class="course-code">ENG2005</div>
+                        <div class="course-title">Advanced Technical Communication</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniCore-Proj_Internships">
+                <a href="SUMMER_INDUSTRIAL_INTERNSHIP.html" >
+                    <div class="set uniCore-Proj_Internships" id="SUMMER_INDUSTRIAL_INTERNSHIP">
+                        <div class="course-code">DSN2092</div>
+                        <div class="course-title">Summer Industrial Internship</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="SEMESTER_INTERNSHIP.html" >
+                    <div class="set uniCore-Proj_Internships" id="SEMESTER_INTERNSHIP">
+                        <div class="course-code">DSN2093</div>
+                        <div class="course-title">Semester Internship</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Project_Exhibition-I.html" >
+                    <div class="set uniCore-Proj_Internships" id="Project_Exhibition-I">
+                        <div class="course-code">DSN2098</div>
+                        <div class="course-title">Project Exhibition - I</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Project_Exhibition-II.html" >
+                    <div class="set uniCore-Proj_Internships" id="Project_Exhibition-II">
+                        <div class="course-code">DSN2099</div>
+                        <div class="course-title">Project Exhibition - II</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Engineering_Project_in_Community_Service.html" >
+                    <div class="set uniCore-Proj_Internships" id="Engineering_Project_in_Community_Service">
+                        <div class="course-code">DSN3099</div>
+                        <div class="course-title">Engineering Project in Community Service</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Capstone_Project_Phase 1.html" >
+                    <div class="set uniCore-Proj_Internships" id="Capstone_Project_Phase 1">
+                        <div class="course-code">DSN4091</div>
+                        <div class="course-title">Capstone Project - Phase 1</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+                <a href="Capstone_Project - Phase 2.html" >
+                    <div class="set uniCore-Proj_Internships" id="Capstone_Project_Phase 2">
+                        <div class="course-code">DSN4092</div>
+                        <div class="course-title">Capstone Project - Phase 2</div>
+                        <div class="course-desc">Practical Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniElective-NSE">
+                <a href="Modelling_and_Simulation_of_Biological_Systems.html" >
+                    <div class="set uniElective-NSE" id="Modelling_and_Simulation_of_Biological_Systems">
+                        <div class="course-code">CHY2007</div>
+                        <div class="course-title">Modelling and Simulation of Biological Systems</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Differential_And_Difference_Equations.html" >
+                    <div class="set uniElective-NSE" id="Differential_And_Difference_Equations">
+                        <div class="course-code">MAT2001</div>
+                        <div class="course-title">Differential And Difference Equations</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Applied_Numerical_Method.html" >
+                    <div class="set uniElective-NSE" id="Applied_Numerical_Method">
+                        <div class="course-code">MAT2003</div>
+                        <div class="course-title">Applied Numerical Method</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Operations_Research.html" >
+                    <div class="set uniElective-NSE" id="Operations_Research">
+                        <div class="course-code">MAT2004</div>
+                        <div class="course-title">Operations Research</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Random_Process.html" >
+                    <div class="set uniElective-NSE" id="Random_Process">
+                        <div class="course-code">MAT3004</div>
+                        <div class="course-title">Random Process</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Computational_Game_Theory.html" >
+                    <div class="set uniElective-NSE" id="Computational_Game_Theory">
+                        <div class="course-code">MAT3008</div>
+                        <div class="course-title">Computational Game Theory</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Biophysics.html" >
+                    <div class="set uniElective-NSE" id="Biophysics">
+                        <div class="course-code">PHY2011</div>
+                        <div class="course-title">Biophysics</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniElective-ME">
+                <a href="Bio_Inspired_Design.html" >
+                    <div class="set uniElective-ME" id="Bio_Inspired_Design">
+                        <div class="course-code">BIO1501</div>
+                        <div class="course-title">Bio Inspired Design</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Foundations_of_Data_Science.html" >
+                    <div class="set uniElective-ME" id="Foundations_of_Data_Science">
+                        <div class="course-code">CDS3005</div>
+                        <div class="course-title">Foundations of Data Science</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Cyber_Physical_Systems.html" >
+                    <div class="set uniElective-ME" id="Cyber_Physical_Systems">
+                        <div class="course-code">CSD3010</div>
+                        <div class="course-title">Cyber Physical Systems</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Human_Computer_Interaction.html" >
+                    <div class="set uniElective-ME" id="Human_Computer_Interaction">
+                        <div class="course-code">CSG2003</div>
+                        <div class="course-title">Human Computer Interaction</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Body_Area_Networks.html" >
+                    <div class="set uniElective-ME" id="Body_Area_Networks">
+                        <div class="course-code">EAC4012</div>
+                        <div class="course-title">Body Area Networks</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Sensors_And_Iot.html" >
+                    <div class="set uniElective-ME" id="Sensors_And_Iot">
+                        <div class="course-code">ECE4006</div>
+                        <div class="course-title">Sensors And Iot</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Introduction_to_Computational_Linguistics.html" >
+                    <div class="set uniElective-ME" id="Introduction_to_Computational_Linguistics">
+                        <div class="course-code">ENG3001</div>
+                        <div class="course-title">Introduction to Computational Linguistics</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="UNMANNED_AERIAL_VEHICLES.html" >
+                    <div class="set uniElective-ME" id="UNMANNED_AERIAL_VEHICLES">
+                        <div class="course-code">MEA3015</div>
+                        <div class="course-title">Unmanned Aerial Vehicles</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniElective-HSME">
+                <a href="Human_Resource_Management.html">
+                    <div class="set uniElective-HSME" id="Human_Resource_Management">
+                        <div class="course-code">BMT1013</div>
+                        <div class="course-title">Human Resource Management</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="International_Business.html">
+                    <div class="set uniElective-HSME" id="International_Business">
+                        <div class="course-code">BMT2017</div>
+                        <div class="course-title">International Business</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Emotional_Intelligence.html">
+                    <div class="set uniElective-HSME" id="Emotional_Intelligence">
+                        <div class="course-code">HUM1002</div>
+                        <div class="course-title">Emotional Intelligence</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Behavioural_Science.html">
+                    <div class="set uniElective-HSME" id="Behavioural_Science">
+                        <div class="course-code">HUM2001</div>
+                        <div class="course-title">Behavioural Science</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="PRINCIPLES_OF_MANAGEMENT_AND_ORGANIZATIONAL_BEHAVIOUR.html">
+                    <div class="set uniElective-HSME" id="PRINCIPLES_OF_MANAGEMENT_AND_ORGANIZATIONAL_BEHAVIOUR">
+                        <div class="course-code">MGT1002</div>
+                        <div class="course-title">Principles Of Management And Organization Behaviour</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="Technology_Entrepreneurship.html">
+                    <div class="set uniElective-HSME" id="Technology_Entrepreneurship">
+                        <div class="course-code">MGT2003</div>
+                        <div class="course-title">Technology Entrepreneurship</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="uniElective-OP"></div>
+        </section>
+        <section>
+            <div class="NonGraded">
+                <a href="Digital_Literacy.html">
+                    <div class="set NonGraded" id="Digital_Literacy">
+                        <div class="course-code">CSE0001</div>
+                        <div class="course-title">Digital Literacy</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="OPEN_SOURCE_SOFTWARE_(LINUX_ADMINISTRATION).html">
+                    <div class="set NonGraded" id="OPEN_SOURCE_SOFTWARE_(LINUX_ADMINISTRATION)">
+                        <div class="course-code">CSE0002</div>
+                        <div class="course-title">Open Source Software (Linux Administration)</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="EXTRA_CURRICULAR_ACTIVITIES.html">
+                    <div class="set NonGraded" id="EXTRA_CURRICULAR_ACTIVITIES">
+                        <div class="course-code">EXC0001</div>
+                        <div class="course-title">Extra Curricular Activities</div>
+                        <div class="course-desc">Project Only</div>
+                    </div>
+                </a>
+                <a href="Swachh_Bharat.html">
+                    <div class="set NonGraded" id="Swachh_Bharat">
+                        <div class="course-code">HUM0002</div>
+                        <div class="course-title">Swachh Bharat</div>
+                        <div class="course-desc">Project Only</div>
+                    </div>
+                </a>
+                <a href="INDIAN_CONSTITUTION.html">
+                    <div class="set NonGraded" id="INDIAN_CONSTITUTION">
+                        <div class="course-code">HUM0003</div>
+                        <div class="course-title">Indian Constitution</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="INDIAN_HERITAGE.html">
+                    <div class="set NonGraded" id="INDIAN_HERITAGE">
+                        <div class="course-code">HUM0004</div>
+                        <div class="course-title">Indian Heritage</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="UHV-1.html">
+                    <div class="set NonGraded" id="UHV-1">
+                        <div class="course-code">UHV0001</div>
+                        <div class="course-title">Universal Human Values - I</div>
+                        <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+                <a href="UHV-2.html">
+                    <div class="set NonGraded" id="UHV-2">
+                        <div class="course-code">UHV0002</div>
+                            <div class="course-title">Universal Human Values - II</div>
+                            <div class="course-desc">Lecture and Tutorial Hours Only</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    <br>
+    <footer>
+        <section class="FAQ" id="faq">
+        <section>
+            <div class="faq-container">
+                <h2 >Frequently Asked questions</h2>
+                <br>
+                <div class="faq-item">
+                    <div class="faq-question">How do I find details about a specific course?</div>
+                    <div class="faq-answer">Simply click on the corresponding course button under the “Courses” section. The relevant course details will be displayed, and the page will scroll to the detailed information section.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What types of courses are offered?</div>
+                    <div class="faq-answer">The courses encompass all the mandatory core subjects and electives listed in your official curriculum, ensuring that students have access to the complete range of academic content needed to fulfill degree requirements.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I access past year question papers and notes for these courses?</div>
+                    <div class="faq-answer">Yes! Alongside each course, you will find resources such as notes, important topics, and previous years’ question papers to help with your preparation.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is this site updated regularly with new course information?</div>
+                    <div class="faq-answer">Yes, I regularly update the course listings and resources each semester to keep the information current and useful.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Who can I contact for additional academic support or suggestions?</div>
+                    <div class="faq-answer">You can reach me out through “Contact Us” section for further guidance or feedback.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do I need an account to view materials?</div>
+                    <div class="faq-answer">
+                      Yes. You need to sign up and log in to access study materials. This helps keep your data secure and lets me personalize your experience.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if my course or subject is missing?</div>
+                    <div class="faq-answer">
+                      If you don’t find your course, you can contact me through the “Contact” section or social links. I’ll try to add that subject and its resources as soon as possible.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is this build by VIT officially?</div>
+                    <div class="faq-answer">No,This initiative is a community-driven effort and is not officially affiliated with VIT. It is a personal endeavor undertaken with the aim of enhancing the campus experience for everyone.If you have found this platform beneficial, sharing it with your peers would be the most valuable form of support.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is there a mobile-friendly version of this site?</div>
+                    <div class="faq-answer">Yes, the site is optimized for all devices including smartphones and tablets for easy access anytime, anywhere.</div>
+                </div>
+            </div>
+        </section>
+        </section>
+        <section class="vprep-footer" id="contact">
+            <div class="vprep-footer-top">
+                <div class="vprep-footer-col vprep-footer-contact">
+                    <div class="footer-label">Contact Us</div>
+                    <div class="footer-phone">
+                        <a href="mailto:lavanyapandit148@gmail.com">
+                            <i class="fa-solid fa-envelope"></i> lavanyapandit148@gmail.com
+                        </a>
+                    </div>
+                </div>
+                <div class="vprep-footer-col vprep-footer-center">
+                    <div class="footer-title">Start Your Learning Journey Today!</div><br>
+                    <div class="footer-desc">Browse courses and unlock new skills to reach your goals.</div>
+                    <div class="footer-signature">Made with <span style="color:#ed4787;">&#10084;</span> by Lavanya</div>
+                    <div class="footer-signature">Developed for VITIANS by a VITIAN</div>
+                </div>
+                <div class="vprep-footer-col vprep-footer-social">
+                    <div class="footer-label">Social Media</div>
+                    <div class="footer-icons">
+                        <a href="https://www.instagram.com/juxt.me.lav/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/lavanya-pandit-416916313/"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="vprep-footer-middle">
+                <div class="footer-brand">
+                    <span><strong>V</strong>Prep</span>
+                </div>
+                <div class="footer-law">
+                  <a href="terms.html" target="_blank">Terms &amp; Conditions</a>
+                  <a href="privacy.html" target="_blank">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="vprep-footer-bottom">
+                <div class="footer-copyright">Copyright © 2025 vprep. All Rights Reserved.</div>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

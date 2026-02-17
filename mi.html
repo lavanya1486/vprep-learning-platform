@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Materials</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="SubStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+    <nav id="navBar">
+        <div id="logo">
+            <img src="V Prep (1).png" alt="Logo">
+        </div>
+        <ul class="navLinks">
+            <li class="HomeTab">
+                <a href="VPrepMain.html#home">Home</a>
+            </li>
+            <li class="Courses">
+                <a href="VPrepMain.html#courses">Courses</a>
+            </li>
+            <li class="FAQ">
+                <a href="VPrepMain.html#faq">FAQ's</a>
+            </li>
+            <li class="Contact">
+                <a href="VPrepMain.html#contact">Contact</a>
+            </li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            ☰
+        </div>
+    </nav>
+</header>
+
+<main>
+    <h1 class="heading">Medical Imaging</h1>
+
+    <section class="materials-section">
+        <p id="materialsInfo">Loading materials..</p>
+        <div style="display:flex; justify-content:flex-end; margin-bottom:10px; gap:10px;">
+          <label for="typeFilter" style="font-size:0.9rem; align-self:center;">Filter by type:</label>
+          <select id="typeFilter" style="padding:4px 8px; font-size:0.9rem;">
+            <option value="all">All</option>
+            <option value="notes">Notes</option>
+            <option value="assignment">Assignment</option>
+            <option value="pyq">PYQ</option>
+          </select>
+        </div>
+        
+        <table class="materials-table">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="materialsBody">
+                <!-- rows added by JS -->
+            </tbody>
+        </table>
+
+        <div id="noMaterials" class="no-materials" style="display:none;">
+            No study materials uploaded yet.
+        </div>
+    </section>
+</main>
+<script src="SubScript.js"></script>
+</body>
+</html>
