@@ -1,3 +1,11 @@
 {
-  "subject": "Transform Techniques and Difference Equations"
+  "subject": "Transform Techniques and Difference Equations",
+  "resources": [
+    {
+      "fileName": "Module 1 ",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/fourier-series.pdf",
+      "uploadDate": "2026-10-31T14:55:00.000+05:30"
+    }
+  ]
 }
