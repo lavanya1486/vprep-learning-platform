@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/admin"
+  to = "/cms/"
+  status = 301
+
+[[redirects]]
+  from = "/cms"
+  to = "/cms/"
+  status = 301

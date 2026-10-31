@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: lavanya1486/vprep-frontend
+  branch: main
+
+media_folder: "User/materials"
+public_folder: "/User/materials"
+
+collections:
+  - name: "materials"
+    label: "Course materials"
+    folder: "content/materials"
+    create: true
+    format: "json"
+    identifier_field: "subject"
+    slug: "{{slug}}"
+    fields:
+      - label: "Subject"
+        name: "subject"
+        widget: "string"
+      - label: "Resources"
+        name: "resources"
+        widget: "list"
+        fields:
+          - label: "File name"
+            name: "fileName"
+            widget: "string"
+          - label: "Type"
+            name: "fileType"
+            widget: "select"
+            options:
+              - "notes"
+              - "assignment"
+              - "pyq"
+          - label: "PDF"
+            name: "fileUrl"
+            widget: "file"
+          - label: "Uploaded date"
+            name: "uploadDate"
+            widget: "datetime"
+            required: false

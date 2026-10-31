@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/admin", "destination": "/cms/", "permanent": true },
+    { "source": "/cms", "destination": "/cms/", "permanent": true }
+  ]
+}

@@ -1,16 +1,4 @@
-const API_BASE_URL = 'https://vprep.up.railway.app/api/files';
-const USER_BASE_URL = 'https://vprep.up.railway.app/api/user';
-
-// ===== LOGIN GUARD FOR MATERIAL PAGES =====
-(function enforceLoginForMaterials() {
-  const email = localStorage.getItem('vprepEmail');
-  const token = localStorage.getItem('vprepToken');
-
-  if (!email || !token) {
-    alert('Please log in or sign up to access study materials.');
-    window.location.href = 'login.html';
-  }
-})();
+const STATIC_MATERIALS_BASE = '../content/materials';
 
 // ========== UTILITIES ==========
 
@@ -43,21 +31,21 @@ function formatDate(dateString) {
 }
 
 function getFileTypeIcon(fileType) {
-  if (!fileType) return "📄";
+  if (!fileType) return "ðŸ“„";
 
   const type = fileType.toLowerCase();
-  if (type.includes("notes")) return "📄";
-  if (type.includes("assignment")) return "📝";
-  if (type.includes("pyq")) return "📜";
+  if (type.includes("notes")) return "ðŸ“„";
+  if (type.includes("assignment")) return "ðŸ“";
+  if (type.includes("pyq")) return "ðŸ“œ";
 
-  return "📄";
+  return "ðŸ“„";
 }
 
 function getTypeIconAndTag(type) {
   const icons = {
-    notes: { icon: '📄', tag: 'Notes' },
-    assignment: { icon: '📝', tag: 'Assignment' },
-    pyq: { icon: '📜', tag: 'PYQ' }
+    notes: { icon: 'ðŸ“„', tag: 'Notes' },
+    assignment: { icon: 'ðŸ“', tag: 'Assignment' },
+    pyq: { icon: 'ðŸ“œ', tag: 'PYQ' }
   };
   const info = icons[type] || icons.notes;
   return {
@@ -73,44 +61,18 @@ function closePdfViewer() {
   if (pdfFrame) pdfFrame.src = '';
 }
 
-async function viewPdf(fileId, fileName) {
-  const token = localStorage.getItem('vprepToken');
-  if (!token) {
-    alert('Please log in again to view materials.');
-    window.location.href = 'login.html';
-    return;
-  }
-
-  const url = `${API_BASE_URL}/view/${encodeURIComponent(fileId)}`;
-
-  try {
-    const res = await fetch(url, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-
-    if (!res.ok) {
-      alert(`Failed to load PDF (status ${res.status}).`);
-      return;
-    }
-
-    const blob = await res.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    window.open(blobUrl + '#toolbar=0', '_blank', 'noopener,noreferrer');
-  } catch (e) {
-    console.error('PDF open error:', e);
-    alert('Network error while opening PDF.');
-  }
+function viewPdf(fileUrl) {
+  window.open(fileUrl, '_blank', 'noopener,noreferrer');
 }
 
 
-function downloadPdf(fileId, fileName) {
-  const downloadUrl = `${API_BASE_URL}/download/${fileId}`;
+function downloadPdf(fileUrl, fileName) {
   const link = document.createElement('a');
-  link.href = downloadUrl;
+  link.href = fileUrl;
   link.download = fileName;
   document.body.appendChild(link);
   link.click();
-  document.body.removeChild(link);
+  link.remove();
 }
 
 function toggleMenu() {
@@ -121,22 +83,7 @@ function toggleMenu() {
 }
 
 async function checkViewsAllowed() {
-  const token = localStorage.getItem('vprepToken');
-  if (!token) {
-    return { allowed: false, remaining: 0 };
-  }
-
-  const res = await fetch(`${USER_BASE_URL}/views/check`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  });
-
-  if (!res.ok) {
-    throw new Error(`View check failed: ${res.status}`);
-  }
-  return res.json(); // { allowed, remaining }
+  return { allowed: true, remaining: null };
 }
 
 // ==================== MAIN FUNCTIONS ====================
@@ -151,8 +98,9 @@ function detectSubjectName() {
   return title || 'Unknown Subject';
 }
 
-// Fetch materials for specific subject from backend
 async function loadMaterials(subjectName) {
+  if (!document.getElementById('materialsBody')) return;
+
   const info = document.getElementById('materialsInfo');
   const noMaterials = document.getElementById('noMaterials');
   const tbody = document.getElementById('materialsBody');
@@ -161,25 +109,21 @@ async function loadMaterials(subjectName) {
   if (tbody) tbody.innerHTML = '';
 
   try {
-    const encodedSubject = encodeURIComponent(subjectName);
-    const url = `${API_BASE_URL}/subject/${encodedSubject}`;
+    const slug = subjectName
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    const res = await fetch(`${STATIC_MATERIALS_BASE}/${slug}.json`);
 
-    console.log('🔗 Fetching from:', url);
-
-    const token = localStorage.getItem('vprepToken');
-    const headers = {};
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
+    if (res.status === 404) {
+      window.allFiles = [];
+    } else if (!res.ok) {
+      throw new Error(`Materials file failed: ${res.status}`);
+    } else {
+      const data = await res.json();
+      window.allFiles = Array.isArray(data) ? data : (data.resources || []);
     }
-
-    const res = await fetch(url, { headers });
-
-    if (!res.ok) {
-      throw new Error(`Server error: ${res.status}`);
-    }
-
-    window.allFiles = await res.json();
-    console.log(`✅ Found ${window.allFiles?.length || 0} materials`);
 
     if (!window.allFiles || window.allFiles.length === 0) {
       if (info) info.textContent = '';
@@ -190,7 +134,7 @@ async function loadMaterials(subjectName) {
     if (info) info.textContent = '';
     renderTable();
   } catch (error) {
-    console.error('❌ Error loading materials:', error);
+    console.error('Error loading materials:', error);
     if (info) {
       info.textContent = `Error loading materials: ${error.message}`;
     }
@@ -225,9 +169,7 @@ function renderTable() {
 
   filtered.forEach(f => {
     const tr = document.createElement('tr');
-    const uploaded = f.uploadDate
-      ? formatDate(f.uploadDate)
-      : '—';
+    const uploaded = f.uploadDate ? formatDate(f.uploadDate) : '—';
     const sizeFormatted = formatFileSize(f.fileSize);
     const type = (f.fileType || 'notes').toLowerCase();
     const { iconHtml, tagHtml } = getTypeIconAndTag(type);
@@ -244,7 +186,7 @@ function renderTable() {
       <td>${sizeFormatted}</td>
       <td>
         <button type="button" class="view-btn"
-                onclick="viewPdf('${f.id}', '${f.fileName}')">
+                onclick="viewPdf('${f.fileUrl}')">
           View
         </button>
       </td>
@@ -256,7 +198,7 @@ function renderTable() {
 // ==================== EVENT LISTENERS ====================
 document.addEventListener('DOMContentLoaded', () => {
   const subjectName = detectSubjectName();
-  console.log('📚 Loading materials for:', subjectName);
+  console.log('ðŸ“š Loading materials for:', subjectName);
   loadMaterials(subjectName);
 
   const hamburger = document.querySelector('.hamburger');
