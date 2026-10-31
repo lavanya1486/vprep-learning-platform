@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: lavanya1486/vprep-learning-platform
+  name: git-gateway
   branch: main
 
 media_folder: "User/materials"
