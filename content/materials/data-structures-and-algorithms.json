@@ -1,4 +1,41 @@
 {
   "subject": "Data Structures and Algorithms",
-  "resources": []
+  "resources": [
+    {
+      "fileName": "DSA_MTE1",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/DSA_MTE1.pdf",
+      "uploadDate": "2026-10-31T16:55:00.000+05:30"
+    },
+    {
+      "fileName": "DSA_MTE2",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/DSA_MTE2.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "DSA_MTE3",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/DSA_MTE3.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "DSA_MTE4",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/DSA_MTE4.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "DSA_MTE5",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/DSA_MTE5.pdf",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "DSA_TEE1",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/DSA_TEE1.pdf",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    }
+  ]
 }

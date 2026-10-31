@@ -1,0 +1,77 @@
+{
+  "subject": "Computer Architecture and Organization",
+  "resources": [
+    {
+      "fileName": "COA_CAT1(1)",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA_CAT1(1).pdf",
+      "uploadDate": "2026-10-31T16:55:00.000+05:30"
+    },
+    {
+      "fileName": "COA_CAT1(2)",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA_CAT1(2).pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "COA_MTE1",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA_MTE1.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "COA_MTE2",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA_MTE2.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "COA_TEE1",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA_TEE1.pdf",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "COA_TEE2",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA_TEE2.pdf",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "COA_TEE3",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA_TEE3.pdf",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "COA1",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA1.png",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "COA2",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA2.png",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "COA3",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA3.png",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "COA4",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA4.png",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    },
+    {
+      "fileName": "COA5",
+      "fileType": "pyq",
+      "fileUrl": "/User/materials/COA5.png",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    }
+  ]
+}
