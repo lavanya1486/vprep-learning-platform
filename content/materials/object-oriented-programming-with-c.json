@@ -1,0 +1,35 @@
+{
+  "subject": "Object Oriented Programming with C++",
+  "resources": [
+    {
+      "fileName": "Module 1",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/unit-1-notes.pdf",
+      "uploadDate": "2026-10-31T16:55:00.000+05:30"
+    },
+    {
+      "fileName": "Module 2",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/unit-2-notes.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "Module 3",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/unit-3-notes.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "Module 4",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/unit-4-notes.pdf",
+      "uploadDate": "2026-10-31T16:56:00.000+05:30"
+    },
+    {
+      "fileName": "Module 5",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/unit-5-notes.pdf",
+      "uploadDate": "2026-10-31T16:57:00.000+05:30"
+    }
+  ]
+}
