@@ -12,6 +12,35 @@
       "fileType": "notes",
       "fileUrl": "/User/materials/fourier-transform.pdf",
       "uploadDate": "2026-10-31T15:03:00.000+05:30"
+    },
+    {
+      "fileName": "Laplace Transform Module 3",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/laplace-transform.pdf",
+      "uploadDate": "2026-10-31T16:38:00.000+05:30"
+    },
+    {
+      "fileName": "Z-Transform Module 4",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/z-transform.pdf"
+    },
+    {
+      "fileName": "Difference Equation ",
+      "fileType": "notes",
+      "fileUrl": "/User/materials/difference-equation.pdf",
+      "uploadDate": "2026-10-31T16:39:00.000+05:30"
+    },
+    {
+      "fileName": "Practice Set",
+      "fileType": "assignment",
+      "fileUrl": "/User/materials/practice_set-1.pdf",
+      "uploadDate": "2026-10-31T16:40:00.000+05:30"
+    },
+    {
+      "fileName": "Practice Set",
+      "fileType": "assignment",
+      "fileUrl": "/User/materials/practice_set-3.pdf",
+      "uploadDate": "2026-10-31T16:41:00.000+05:30"
     }
   ]
 }
