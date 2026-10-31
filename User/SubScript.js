@@ -31,21 +31,21 @@ function formatDate(dateString) {
 }
 
 function getFileTypeIcon(fileType) {
-  if (!fileType) return "ðŸ“„";
+  if (!fileType) return "&#128196;";
 
   const type = fileType.toLowerCase();
-  if (type.includes("notes")) return "ðŸ“„";
-  if (type.includes("assignment")) return "ðŸ“";
-  if (type.includes("pyq")) return "ðŸ“œ";
+  if (type.includes("notes")) return "&#128196;";
+  if (type.includes("assignment")) return "&#128221;";
+  if (type.includes("pyq")) return "&#128220;";
 
-  return "ðŸ“„";
+  return "&#128196;";
 }
 
 function getTypeIconAndTag(type) {
   const icons = {
-    notes: { icon: 'ðŸ“„', tag: 'Notes' },
-    assignment: { icon: 'ðŸ“', tag: 'Assignment' },
-    pyq: { icon: 'ðŸ“œ', tag: 'PYQ' }
+    notes: { icon: '&#128196;', tag: 'Notes' },
+    assignment: { icon: '&#128221;', tag: 'Assignment' },
+    pyq: { icon: '&#128220;', tag: 'PYQ' }
   };
   const info = icons[type] || icons.notes;
   return {
